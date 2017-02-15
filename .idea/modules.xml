@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Multifactor.iml" filepath="$PROJECT_DIR$/Multifactor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Multifactor_auth.iml" filepath="$PROJECT_DIR$/Multifactor_auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>

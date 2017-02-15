@@ -257,7 +257,7 @@ public class Gesture extends Activity {
 
                     newValue = getMax(event.values[0], event.values[1], event.values[2]);
 
-                    if (newValue != linkedList.getLast() && Start <= 3) {
+                    if (!linkedList.getLast().equals(newValue) && Start <= 3) {
 
                         if (Start == 1) {
                             MiddlePosition = newValue;
@@ -270,7 +270,7 @@ public class Gesture extends Activity {
                         Start++;
                         break;
                     }
-                    if (newValue == linkedList.getLast()) {
+                    if (linkedList.getLast().equals(newValue)) {
                         break;
                     }
                     break;
@@ -340,19 +340,19 @@ public class Gesture extends Activity {
     public void RecordGest() {
 
         if (linkedList.size() == 2) {
-            if (linkedList.getLast() == 1 && linkedList.getFirst() == 2) {
+            if (linkedList.getLast().equals(1) && linkedList.getFirst().equals(2)) {
                 countGesture++;
                 gestureSequence.append("1");
                 value.setText("Left Move");
-            } else if (linkedList.getLast() == 3 && linkedList.getFirst() == 2) {
+            } else if (linkedList.getLast().equals(3) && linkedList.getFirst().equals(2)) {
                 countGesture++;
                 gestureSequence.append("2");
                 value.setText("Upward Move");
-            } else if (linkedList.getLast() == 4 && linkedList.getFirst() == 2) {
+            } else if (linkedList.getLast().equals(4) && linkedList.getFirst().equals(2)) {
                 countGesture++;
                 gestureSequence.append("3");
                 value.setText("Right Move");
-            } else if (linkedList.getLast() == 6 && linkedList.getFirst() == 2) {
+            } else if (linkedList.getLast().equals(6) && linkedList.getFirst().equals(2)) {
                 countGesture++;
                 gestureSequence.append("4");
                 value.setText("Downward Move");
@@ -361,31 +361,31 @@ public class Gesture extends Activity {
             }
         } else if (linkedList.size() == 3) {
             if (MiddlePosition == 1) {
-                if (linkedList.getLast() == 6 && linkedList.getFirst() == 2) {
+                if (linkedList.getLast().equals(6) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("5");
                     value.setText("Left to Left");
-                } else if (linkedList.getLast() == 3 && linkedList.getFirst() == 2) {
+                } else if (linkedList.getLast().equals(3) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("6");
                     value.setText("Left To Right");
                 }
             } else if (MiddlePosition == 4) {
-                if (linkedList.getLast() == 6 && linkedList.getFirst() == 2) {
+                if (linkedList.getLast().equals(6) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("7");
                     value.setText("Right to Left");
-                } else if (linkedList.getLast() == 3 && linkedList.getFirst() == 2) {
+                } else if (linkedList.getLast().equals(3) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("8");
                     value.setText("Right to Right");
                 }
             } else if (MiddlePosition == 3) {
-                if (linkedList.getLast() == 1 && linkedList.getFirst() == 2) {
+                if (linkedList.getLast().equals(1) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("9");
                     value.setText("Upward To Left");
-                } else if (linkedList.getLast() == 4 && linkedList.getFirst() == 2) {
+                } else if (linkedList.getLast().equals(4) && linkedList.getFirst().equals(2)) {
                     countGesture++;
                     gestureSequence.append("0");
                     value.setText("Upward to Right");
