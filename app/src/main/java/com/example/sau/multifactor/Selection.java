@@ -207,7 +207,7 @@ public class Selection extends Activity implements AdapterView.OnItemSelectedLis
                 BaseActivity.Coming_From_Multiple=4;
                 BaseActivity.Sub_Type="Anything";
                 BaseActivity.startRegtime=System.currentTimeMillis();
-                startActivity(new Intent(Selection.this,ThreeIntoThree.class));
+                startActivity(new Intent(Selection.this,FourIntoThree.class));
             }
 
             else {

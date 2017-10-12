@@ -97,7 +97,7 @@ public class Gesture extends Activity {
 
                         if (BaseActivity.Sub_Type.contentEquals("Anything"))
                         {
-                            startActivity(new Intent(BaseActivity.context,ThreeIntoThree.class));
+                            startActivity(new Intent(BaseActivity.context,FourIntoThree.class));
                         }
                         else {
                             startActivity(new Intent(BaseActivity.context, Gesture.class));
@@ -120,7 +120,7 @@ public class Gesture extends Activity {
                             {
                                 String Phase="2";
                                 long totaltime=552;
-                                BaseActivity.GridSize="3*3";
+                                BaseActivity.GridSize="4*3";
                                 SendDataToServer sendDataToServer=new SendDataToServer();
 
                                 responseGlobal=sendDataToServer.LoginRegis(Phase,BaseActivity.Auth_type,BaseActivity.GridSize,BaseActivity.tapseq,gestureSequence.toString(),BaseActivity.AndroidId,Long.toString(totaltime));
@@ -156,7 +156,7 @@ public class Gesture extends Activity {
                             String Phase="1";
 
 
-                            BaseActivity.GridSize="3*3";
+                            BaseActivity.GridSize="4*3";
 
                             BaseActivity.endRegtime=System.currentTimeMillis();
 

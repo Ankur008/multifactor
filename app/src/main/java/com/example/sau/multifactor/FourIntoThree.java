@@ -2,27 +2,12 @@ package com.example.sau.multifactor;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sau on 17/4/16.
@@ -202,8 +187,17 @@ public class FourIntoThree extends Activity {
 
                     BaseActivity.tapseq=tapSequence.toString();
                     Log.i("First Tap", tapSequence.toString());
-                    startActivity(new Intent(BaseActivity.context, FourIntoThree.class));
                     BaseActivity.tap_iteration=1;
+
+
+                    if (BaseActivity.Sub_Type.contentEquals("Anything"))
+                    {
+                        startActivity(new Intent(FourIntoThree.this, com.example.sau.multifactor.Gesture.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(BaseActivity.context, FourIntoThree.class));
+                    }
+
                 }
 
                 //Either login or registration is done at second time.
@@ -215,20 +209,36 @@ public class FourIntoThree extends Activity {
                         Log.i("In the Second Phase","Login Step");
                         //Toast.makeText(getApplicationContext(),"Login",Toast.LENGTH_LONG).show();
 
-                        String gesture="mvn";
-                        long totaltime=552;
-                        //responseGlobal=checkdata(BaseActivity.Auth_type,BaseActivity.GridSize,tapSequence.toString(),gesture,BaseActivity.AndroidId,Long.toString(totaltime));
-                        String Phase="2"; //Login Phase
+                        if (BaseActivity.Sub_Type.contentEquals("Anything"))  //multifactor login step
+                        {
+                            BaseActivity.tapseq=tapSequence.toString();
+                            startActivity(new Intent(FourIntoThree.this, com.example.sau.multifactor.Gesture.class));
+                            finish();
+                        }
+                        else {
+
+                            String gesture="mvn";
+                            long totaltime=552;
+                            //responseGlobal=checkdata(BaseActivity.Auth_type,BaseActivity.GridSize,tapSequence.toString(),gesture,BaseActivity.AndroidId,Long.toString(totaltime));
+                            String Phase="2"; //Login Phase
 
 
-                        //Send Data to server
-                        SendDataToServer sendDataToServer=new SendDataToServer();
+                            //Send Data to server
+                            SendDataToServer sendDataToServer=new SendDataToServer();
 
-                        responseGlobal=sendDataToServer.LoginRegis(Phase,BaseActivity.Auth_type,BaseActivity.GridSize,tapSequence.toString(),gesture,BaseActivity.AndroidId,Long.toString(totaltime));
-                        //Toast.makeText(getApplicationContext(),responseGlobal,Toast.LENGTH_LONG).show();
+                            responseGlobal=sendDataToServer.LoginRegis(Phase,BaseActivity.Auth_type,BaseActivity.GridSize,tapSequence.toString(),gesture,BaseActivity.AndroidId,Long.toString(totaltime));
+                            //Toast.makeText(getApplicationContext(),responseGlobal,Toast.LENGTH_LONG).show();
 
-                        startActivity(new Intent(BaseActivity.context,MainActivity.class));
+                            startActivity(new Intent(BaseActivity.context,MainActivity.class));
+                        }
+
+
+                    }//second time tap entered
+                    else if (BaseActivity.tapseq.contentEquals(tapSequence.toString()) && BaseActivity.Sub_Type.contentEquals("Anything"))
+                    {
+                        startActivity(new Intent(FourIntoThree.this, com.example.sau.multifactor.Gesture.class));
                     }
+
 
                     else if (BaseActivity.tapseq.contentEquals(tapSequence.toString())) {
 

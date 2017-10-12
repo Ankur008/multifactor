@@ -1,19 +1,16 @@
 package com.example.sau.multifactor;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +33,7 @@ public class SendDataToServer {
 
     public String LoginRegis(final String Phase, final String AuthType, final String GridSize, final String Tap, final String Gesture, final String AndroidId, final String RegTime)
     {
+        final Long reqStartTime= Calendar.getInstance().getTimeInMillis();
         Log.i("KEY_AuthType",AuthType);
         Log.i("KEY_GridSize",GridSize);
         Log.i("KEY_Tap", Tap);
@@ -49,7 +47,12 @@ public class SendDataToServer {
                     public void onResponse(String response) {
                         responseGlobal=response;
 
+                        final Long reqEndTime=Calendar.getInstance().getTimeInMillis();
+                        final Long totalTime=reqEndTime-reqStartTime;
+
                         Toast.makeText(BaseActivity.context,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(BaseActivity.context,String.valueOf(totalTime),Toast.LENGTH_LONG).show();
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -76,8 +79,6 @@ public class SendDataToServer {
             }
 
         };
-
-
 
         RequestQueue requestQueue = Volley.newRequestQueue(BaseActivity.context);
         requestQueue.add(stringRequest);

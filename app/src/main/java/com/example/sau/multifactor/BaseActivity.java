@@ -7,7 +7,6 @@ import android.content.Context;
  */
 public class BaseActivity {
 
-
     protected static Boolean SignIn;
     protected static int tap_iteration;
     protected static int gesture_iteration;
